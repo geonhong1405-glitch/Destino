@@ -1,0 +1,657 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive Grid */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Header */
+.header {
+    height: 70px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.logo {
+    color: #00aaff;
+    font-size: 24px;
+}
+.header-search-bar input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    width: 300px;
+}
+.header-nav a {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .header-search-bar {
+        display: none;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: #000;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+}
+.hero-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+.search-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+.search-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.search-tabs button {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.search-tabs button.active {
+    color: #00aaff;
+    border-bottom: 2px solid #00aaff;
+}
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+.search-form input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.btn-search {
+    background: #00aaff;
+    color: #fff;
+    border: none;
+    padding: 0 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+    }
+    .btn-search {
+        padding: 15px;
+    }
+}
+
+/* Quick Icons 섹션 스타일 */
+.quick-icons-container {
+    padding: 40px 0;
+    overflow-x: auto; /* 모바일에서 아이콘이 많을 경우 스크롤 허용 */
+}
+
+.quick-icons-wrapper {
+    display: flex;
+    justify-content: space-between; /* 아이콘들을 가로로 균등 배치 */
+    align-items: center;
+    min-width: 800px; /* 아이콘들이 뭉치지 않게 최소 너비 설정 */
+    margin: 0 auto;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.icon-img-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px; /* 이미지처럼 부드러운 곡면 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.icon-img-box:hover {
+    transform: translateY(-5px);
+}
+
+.icon-img-box img {
+    width: 32px; /* 아이콘 이미지 크기 조절 */
+    height: 32px;
+    object-fit: contain;
+}
+
+.icon-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* 이미지에 맞춰 각 아이콘 배경색 지정 (연한 파스텔톤) */
+.color-ai {
+    background-color: #f0f3ff;
+}
+.color-group {
+    background-color: #fff0f5;
+}
+.color-flight {
+    background-color: #f0f9ff;
+}
+.color-overseas {
+    background-color: #f8f9fa;
+}
+.color-domestic {
+    background-color: #f8f9fa;
+}
+.color-package {
+    background-color: #f8f9fa;
+}
+.color-tour {
+    background-color: #f8f9fa;
+}
+.color-rentcar {
+    background-color: #f8f9fa;
+}
+
+/* 모바일 대응: 화면이 아주 작아지면 가로 스크롤 표시 */
+@media (max-width: 768px) {
+    .quick-icons-container::-webkit-scrollbar {
+        display: none; /* 스크롤바 숨김 */
+    }
+    .quick-icons-wrapper {
+        gap: 20px;
+        padding-bottom: 10px;
+    }
+}
+
+/* Section Common */
+.section {
+    padding: 60px 0;
+}
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.live-tag {
+    background: #ff4d4d;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+/* Event Banners */
+/* 1. 섹션 및 슬라이더 레이아웃 */
+.event-section {
+    position: relative;
+    padding: 60px 0;
+}
+
+.event-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* 2. 그리드 설정: 무조건 3개씩 보이도록 유지 */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개 고정 */
+    gap: 20px;
+    width: 100%;
+}
+
+/* 3. 카드 공통 사이즈 및 기본 스타일 */
+.event-card {
+    position: relative;
+    min-height: 160px;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* 연한 테두리 추가 */
+}
+
+.event-content {
+    z-index: 2; /* 텍스트가 배경보다 위에 오도록 */
+    position: relative;
+}
+
+/* 4. 카드 개별 테마 (HTML 클래스 매칭) */
+.yellow-card {
+    background-color: #ffc800;
+    color: #333;
+}
+.pink-card {
+    background-color: #fff0f0;
+    color: #8b1d1d;
+}
+.image-card {
+    color: #fff;
+} /* 배경 이미지가 있는 카드용 */
+
+.event-content.light {
+    color: #fff;
+}
+
+.event-sub {
+    font-size: clamp(10px, 0.9vw, 12px);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 0.8;
+}
+
+.event-desc {
+    font-size: clamp(11px, 1vw, 14px);
+    opacity: 0.9;
+}
+
+/* 6. 버튼 스타일 (HTML 클래스 매칭) */
+.btn-event-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #fff;
+    color: #1a2a4a;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: clamp(10px, 0.9vw, 12px);
+    text-decoration: none;
+}
+
+.btn-event-red {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #ff3b3b;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: clamp(10px, 0.9vw, 12px);
+    cursor: pointer;
+}
+
+/* 7. 슬라이드 화살표 위치 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: -20px;
+}
+.next {
+    right: -20px;
+}
+
+/* 8. 반응형 세부 조정 */
+@media (max-width: 1200px) {
+    .grid-3 {
+        gap: 15px;
+    }
+    .event-card {
+        padding: 20px;
+    }
+    .prev {
+        left: -10px;
+    } /* 화살표 안쪽으로 살짝 이동 */
+    .next {
+        right: -10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-3 {
+        gap: 10px;
+    }
+    .event-card {
+        min-height: 120px;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    .event-desc {
+        display: none;
+    } /* 공간 확보를 위해 모바일 설명 생략 */
+    .slider-btn {
+        display: none;
+    } /* 모바일 터치 환경 고려 화살표 숨김 */
+}
+
+/* Product Cards */
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+.img-box {
+    height: 200px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.info-box {
+    padding: 20px;
+}
+.p-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.p-price span {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 13px;
+    margin-right: 5px;
+}
+.p-price {
+    font-weight: bold;
+    color: #ff3366;
+    margin-bottom: 15px;
+}
+.btn-buy {
+    width: 100%;
+    padding: 10px;
+    background: #1a2a4a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* AI Section */
+.ai-section {
+    display: flex;
+    gap: 30px;
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 60px;
+}
+.ai-sidebar {
+    width: 250px;
+}
+.ai-sidebar h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.ai-sidebar ul li {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background: #fff;
+}
+.ai-sidebar ul li.active {
+    background: #00aaff;
+    color: #fff;
+}
+.ai-content {
+    flex: 1;
+}
+.ai-card {
+    background: #ddd;
+    border-radius: 12px;
+    height: 250px;
+}
+
+@media (max-width: 992px) {
+    .ai-section {
+        flex-direction: column;
+    }
+    .ai-sidebar {
+        width: 100%;
+    }
+    .ai-sidebar ul {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+/* Dark Section */
+.hot-dest-dark {
+    background: #0f172a;
+    padding: 80px 0;
+    color: #fff;
+}
+.section-title.light {
+    color: #fff;
+}
+.dest-card {
+    height: 350px;
+    background: #334155;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #f9f9f9;
+    padding: 60px 0 40px;
+    color: #666;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+/* CS 버튼 스타일 */
+.cs-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-cs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    min-width: 140px;
+}
+
+.btn-cs .icon {
+    font-size: 18px;
+}
+
+/* 구분선 */
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+/* 하단 섹션 */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.company-info p {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.company-info .disclaimer {
+    margin: 15px 0;
+    max-width: 800px;
+}
+
+.footer-policy {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-policy a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 소셜 아이콘 (텍스트로 대체, 이미지 사용 시 img 태그로 변경 가능) */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+/* 반응형 모바일 대응 */
+@media (max-width: 768px) {
+    .footer-top {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-links {
+        order: -1; /* 모바일에서 소셜 링크를 위로 */
+        margin-bottom: 20px;
+    }
+}

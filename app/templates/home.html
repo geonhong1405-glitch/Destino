@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DESTINO - 당신의 여행 운명</title>
+        <link rel="stylesheet" href="/static/home.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container header-inner">
+                <h1 class="logo"><a href="/">DESTINO</a></h1>
+                <div class="header-search-bar">
+                    <input type="text" placeholder="어디로 떠나시나요?" />
+                </div>
+                <nav class="header-nav">
+                    <a href="/login">로그인</a>
+                    <a href="#">이용안내</a>
+                    <a href="#">고객센터</a>
+                    <a href="#">KOR</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">당신의 여행 운명, DESTINO</h2>
+                <div class="search-card">
+                    <div class="search-tabs">
+                        <button class="active">항공</button>
+                        <button>해외숙소</button>
+                        <button>국내숙소</button>
+                        <button>패키지</button>
+                    </div>
+                    <div class="search-form">
+                        <input type="text" placeholder="오사카, 일본" />
+                        <input type="text" placeholder="2024.03.18 - 03.24" />
+                        <input type="text" placeholder="성인 2명" />
+                        <button class="btn-search">검색하기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="container">
+            <section class="quick-icons-container container">
+                <div class="quick-icons-wrapper">
+                    <div class="icon-item">
+                        <div class="icon-img-box color-ai">
+                            <a href="/planner"><img src="ai-guide.png" alt="AI 가이드" /></a>
+                        </div>
+                        <span>AI 가이드</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-group"><img src="group-buy.png" alt="공동예매" /></div>
+                        <span>공동예매</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-flight"><img src="flight.png" alt="항공" /></div>
+                        <span>항공</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-overseas"><img src="overseas.png" alt="해외" /></div>
+                        <span>해외</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-domestic"><img src="domestic.png" alt="국내" /></div>
+                        <span>국내</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-package"><img src="package.png" alt="패키지" /></div>
+                        <span>패키지</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-tour"><img src="tour.png" alt="투어" /></div>
+                        <span>투어</span>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon-img-box color-rentcar"><img src="rentcar.png" alt="렌터카" /></div>
+                        <span>렌터카</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section event-section container">
+                <div class="section-header">
+                    <h3 class="section-title">🎊 진행 중인 이벤트</h3>
+                </div>
+
+                <div class="event-slider-wrapper">
+                    <button class="slider-btn prev">
+                        <img src="arrow-left.png" alt="이전 이벤트" />
+                    </button>
+
+                    <div class="grid-3">
+                        <div class="event-card yellow-card">
+                            <div class="event-content">
+                                <span class="event-sub">HAPPY FRIDAY</span>
+                                <h4 class="event-main-title">티켓 1+1</h4>
+                                <p class="event-desc">인기 투어 · 티켓 단독 특가</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="event-card image-card"
+                            style="
+                                background-image:
+                                    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                                    url(&quot;taiwan-bg.jpg&quot;);
+                            "
+                        >
+                            <div class="event-content light">
+                                <span class="event-sub">DESTINO.com</span>
+                                <h4 class="event-main-title">대만 투어&티켓<br />최대 할인</h4>
+                                <a href="#" class="btn-event-link">바로 보러가기</a>
+                            </div>
+                        </div>
+
+                        <div class="event-card pink-card">
+                            <div class="event-content">
+                                <span class="event-sub">2026</span>
+                                <h4 class="event-main-title">상하이 예원 등회</h4>
+                                <p class="event-desc">1월 26일 그랜드 오픈</p>
+                                <button class="btn-event-red">바로 확인하기 ></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next">
+                        <img src="arrow-right.png" alt="다음 이벤트" />
+                    </button>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-title">👋 실시간 공동구매 중인 핫딜 <span class="live-tag">LIVE</span></h3>
+                <div class="grid-3">
+                    <div class="product-card">
+                        <div class="img-box">이미지</div>
+                        <div class="info-box">
+                            <p class="p-title">[제주] 감성 숙소 + 렌터카 패키지</p>
+                            <p class="p-price"><span>100,000원</span> 320,000원~</p>
+                            <button class="btn-buy">공구 참여하기</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="img-box">이미지</div>
+                        <div class="info-box">
+                            <p class="p-title">[보라카이] 해변 인근 4성급 리조트</p>
+                            <p class="p-price"><span>850,000원</span> 450,000원~</p>
+                            <button class="btn-buy">공구 참여하기</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="img-box">이미지</div>
+                        <div class="info-box">
+                            <p class="p-title">[시드니] 오페라하우스 뷰 5성급 호텔 특가</p>
+                            <p class="p-price"><span>2,450,000원</span> 1,490,000원~</p>
+                            <button class="btn-buy">공구 참여하기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ai-section">
+                <div class="ai-sidebar">
+                    <h3>AI가 찾아낸<br />로컬 핫플레이스</h3>
+                    <ul>
+                        <li class="active">휴양지</li>
+                        <li>유럽도시</li>
+                        <li>국내명소</li>
+                        <li>미식코스</li>
+                    </ul>
+                </div>
+                <div class="ai-content grid-3">
+                    <div class="ai-card">이미지 1</div>
+                    <div class="ai-card">이미지 2</div>
+                    <div class="ai-card">이미지 3</div>
+                </div>
+            </section>
+        </main>
+
+        <section class="hot-dest-dark">
+            <div class="container">
+                <h3 class="section-title light">지금 가장 핫한 여행지, AI는 알고 있어요 ✨</h3>
+                <div class="grid-3">
+                    <div class="dest-card">태국</div>
+                    <div class="dest-card">파리, 프랑스</div>
+                    <div class="dest-card">후쿠오카, 일본</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-column">
+                        <h3>고객센터</h3>
+                        <p>오전 9시 ~ 새벽 3시 운영</p>
+                        <p>채팅 상담 문의: 24시간 운영</p>
+                        <div class="cs-buttons">
+                            <a href="tel:1670-0000" class="btn-cs">
+                                <span class="icon">📞</span>
+                                <div class="text">
+                                    <strong>1670-0000</strong>
+                                </div>
+                            </a>
+                            <a href="#" class="btn-cs">
+                                <span class="icon">💬</span>
+                                <div class="text">
+                                    <strong>채팅 상담</strong>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>회사</h3>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴문의</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>서비스</h3>
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                            <li><a href="#">여행 매거진</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>혜택</h3>
+                        <ul>
+                            <li><a href="#">멤버십 안내</a></li>
+                            <li><a href="#">공동예매 가이드</a></li>
+                            <li><a href="#">포인트 정책</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>모든 여행</h3>
+                        <ul>
+                            <li><a href="#">국내 숙소</a></li>
+                            <li><a href="#">해외 숙소</a></li>
+                            <li><a href="#">항공권</a></li>
+                            <li><a href="#">렌터카</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="footer-divider" />
+
+                <div class="footer-bottom">
+                    <div class="company-info">
+                        <p>(주)데스티노 컴퍼니 | 대표이사: 김여행 | 사업자등록번호: 000-00-00000</p>
+                        <p>주소: 서울특별시 강남구 테헤란로 123 | 이메일: help@destino.com</p>
+                        <p class="disclaimer">
+                            데스티노는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과
+                            관련한 의무와 책임은 각 판매자에게 있습니다.
+                        </p>
+
+                        <div class="footer-policy">
+                            <a href="#">이용약관</a>
+                            <a href="#"><strong>개인정보처리방침</strong></a>
+                            <a href="#">소비자 분쟁해결 기준</a>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-icon">YouTube</a>
+                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

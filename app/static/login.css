@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive Grid */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Header */
+.header {
+    height: 70px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.logo {
+    color: #00aaff;
+    font-size: 24px;
+}
+.header-search-bar input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    width: 300px;
+}
+.header-nav a {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .header-search-bar {
+        display: none;
+    }
+}
+
+/* 로그인 섹션 */
+.login-full-section { padding: 80px 20px; display: flex; justify-content: center; }
+.login-inner { width: 100%; max-width: 540px; text-align: center; }
+
+.login-title-area h2 { font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+.login-title-area p { color: #888; margin-bottom: 40px; }
+
+.promo-banner {
+    background-color: #f0f7ff; color: #1A374D;
+    padding: 15px; border-radius: 12px;
+    font-size: 0.95rem; margin-bottom: 30px;
+}
+
+/* 버튼 리스트 */
+.social-login-list { display: flex; flex-direction: column; gap: 12px; }
+
+.btn-login {
+    width: 100%; height: 56px; border: none; border-radius: 8px;
+    font-size: 1rem; font-weight: 500; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; transition: 0.2s;
+}
+
+/* 로고 이미지 정렬 (이 코드가 있어야 아이콘이 보입니다) */
+.btn-login img {
+    width: 20px; 
+    height: 20px;
+    object-fit: contain;
+    position: absolute;
+    left: 24px;
+}
+/* 개별 버튼 색상 */
+.kakao { background-color: #FEE500; color: #191919; }
+.naver { background-color: #03C75A; color: #fff; }
+.apple { background-color: #000; color: #fff; }
+.google { background-color: #fff; border: 1px solid #ddd; color: #555; }
+.email { background-color: #fff; border: 1px solid #1A374D; color: #1A374D; margin-top: 10px; }
+
+.btn-login:hover { filter: brightness(0.95); }
+
+/* SVG 아이콘 공통 설정 */
+.icon-svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 네이버 버튼 전용 (N 로고가 약간 더 얇으므로 크기 미세조정) */
+.naver .icon-svg {
+    width: 16px; /* 이미지 속 비율과 비슷하게 맞춤 */
+    height: 16px;
+    left: 26px;
+}
+
+/* 하단 지원 메뉴 */
+.login-support { margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 20px; }
+.login-support a { font-size: 0.9rem; color: #999; text-decoration: none; }
+.login-support .bar { width: 1px; height: 12px; background-color: #eee; }
