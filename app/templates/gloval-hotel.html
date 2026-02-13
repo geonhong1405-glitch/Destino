@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESTINO - 해외 숙소 예약</title>
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- Lucide 아이콘 라이브러리 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="../static/gloval-hotel.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <h1 class="logo"><a href="/">DESTINO</a></h1>
+            <div class="header-search-bar">
+                <input type="text" placeholder="어디로 떠나시나요?" />
+            </div>
+            <nav class="header-nav">
+                <a href="/login">로그인</a>
+                <a href="#">이용안내</a>
+                <a href="#">고객센터</a>
+                <a href="#">KOR</a>
+            </nav>
+        </div>
+        
+        <!-- GNB (텍스트 전용) -->
+        <nav class="gnb">
+            <div class="gnb-inner">
+                <a href="#" class="active">항공</a>
+                <a href="#">해외숙소</a>
+                <a href="#">국내숙소</a>
+                <a href="#">투어/티켓</a>
+                <a href="#">패키지</a>
+                <a href="#">렌터카</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+    <!-- Hero & Search Widget -->
+        <section class="hero-section">
+            <h1 class="hero-title">전 세계 완벽한 숙소를 찾아보세요</h1>
+
+            <div class="search-widget">
+                <!-- Overlay for closing modals -->
+                <div class="overlay" id="widgetOverlay" onclick="closeAllPopovers()"></div>
+
+                <!-- 1. 목적지 -->
+                <div class="input-group" onclick="openPopover('destPopover')">
+                    <label>목적지</label>
+                    <input type="text" id="destInput" readonly placeholder="여행지 선택">
+
+                    <!-- Destination Dialog -->
+                    <div class="popover" id="destPopover" onclick="event.stopPropagation()">
+                        <div class="dest-sidebar" id="regionTabs">
+                            <!-- JS로 탭 렌더링 -->
+                        </div>
+                        <div class="dest-content">
+                            <h4 id="selectedRegionTitle">일본 주요 도시</h4>
+                            <div class="city-grid" id="cityGrid">
+                                <!-- JS로 도시 렌더링 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 체크인/체크아웃 (Native Date Picker) -->
+                <div class="input-group">
+                    <div class="dates-wrapper">
+                        <div class="date-box">
+                            <label>체크인</label>
+                            <input type="date" id="checkinDate" required>
+                        </div>
+                        <div class="date-box">
+                            <label>체크아웃</label>
+                            <input type="date" id="checkoutDate" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 인원 및 객실 -->
+                <div class="input-group" onclick="openPopover('guestPopover')">
+                    <label>인원 및 객실</label>
+                    <input type="text" id="guestInput" readonly value="성인 2명, 객실 1개">
+
+                    <!-- Guest Dialog -->
+                    <div class="popover" id="guestPopover" onclick="event.stopPropagation()">
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <h5>성인</h5>
+                                <p>만 18세 이상</p>
+                            </div>
+                            <div class="guest-controls">
+                                <button class="cnt-btn" onclick="updateGuest('adult', -1)" id="btnAdultMinus">-</button>
+                                <span class="cnt-val" id="valAdult">2</span>
+                                <button class="cnt-btn" onclick="updateGuest('adult', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <h5>아동</h5>
+                                <p>만 0~17세</p>
+                            </div>
+                            <div class="guest-controls">
+                                <button class="cnt-btn" onclick="updateGuest('child', -1)" id="btnChildMinus" disabled>-</button>
+                                <span class="cnt-val" id="valChild">0</span>
+                                <button class="cnt-btn" onclick="updateGuest('child', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <h5>객실</h5>
+                            </div>
+                            <div class="guest-controls">
+                                <button class="cnt-btn" onclick="updateGuest('room', -1)" id="btnRoomMinus" disabled>-</button>
+                                <span class="cnt-val" id="valRoom">1</span>
+                                <button class="cnt-btn" onclick="updateGuest('room', 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-search">검색</button>
+            </div>
+        </section>
+
+        <!-- Pre-Search Content 1: Trending Destinations -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2>지금 뜨는 인기 해외 여행지 ✈️</h2>
+            </div>
+            <div class="trending-grid">
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1542051812871-7575058aa0eb?auto=format&fit=crop&w=300&q=80" alt="오사카" class="trending-img">
+                    <div class="trending-name">오사카</div>
+                    <div class="trending-sub">일본</div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1558862107-d49ef2a04d72?auto=format&fit=crop&w=300&q=80" alt="다낭" class="trending-img">
+                    <div class="trending-name">다낭</div>
+                    <div class="trending-sub">베트남</div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=300&q=80" alt="방콕" class="trending-img">
+                    <div class="trending-name">방콕</div>
+                    <div class="trending-sub">태국</div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?auto=format&fit=crop&w=300&q=80" alt="타이베이" class="trending-img">
+                    <div class="trending-name">타이베이</div>
+                    <div class="trending-sub">대만</div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=300&q=80" alt="파리" class="trending-img">
+                    <div class="trending-name">파리</div>
+                    <div class="trending-sub">프랑스</div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?auto=format&fit=crop&w=300&q=80" alt="발리" class="trending-img">
+                    <div class="trending-name">발리</div>
+                    <div class="trending-sub">인도네시아</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Search Content 2: Special Deals -->
+        <section class="content-section" style="margin-top: 20px;">
+            <div class="section-header">
+                <h2>이번 주 DESTINO 단독 특가 🔥</h2>
+                <a href="#">전체보기</a>
+            </div>
+            <div class="deals-grid">
+                <article class="hotel-card">
+                    <div class="hotel-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="호텔">
+                        <div class="badge-discount">최대 40%</div>
+                    </div>
+                    <div class="hotel-info">
+                        <div class="hotel-location">일본, 도쿄</div>
+                        <div class="hotel-name">도쿄 럭셔리 스테이 호텔 신주쿠</div>
+                        <div class="hotel-price">
+                            <div class="original-price">320,000원</div>
+                            <div class="final-price">192,000원~</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hotel-card">
+                    <div class="hotel-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80" alt="호텔">
+                        <div class="badge-discount">선착순 특가</div>
+                    </div>
+                    <div class="hotel-info">
+                        <div class="hotel-location">태국, 방콕</div>
+                        <div class="hotel-name">방콕 리버사이드 그랜드 리조트</div>
+                        <div class="hotel-price">
+                            <div class="original-price">250,000원</div>
+                            <div class="final-price">145,000원~</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hotel-card">
+                    <div class="hotel-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="호텔">
+                        <div class="badge-discount">조식 무료</div>
+                    </div>
+                    <div class="hotel-info">
+                        <div class="hotel-location">베트남, 다낭</div>
+                        <div class="hotel-name">다낭 오션뷰 풀빌라 리조트</div>
+                        <div class="hotel-price">
+                            <div class="original-price">410,000원</div>
+                            <div class="final-price">285,000원~</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hotel-card">
+                    <div class="hotel-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" alt="호텔">
+                        <div class="badge-discount">최대 35%</div>
+                    </div>
+                    <div class="hotel-info">
+                        <div class="hotel-location">프랑스, 파리</div>
+                        <div class="hotel-name">파리 에펠탑 스위트 컬렉션</div>
+                        <div class="hotel-price">
+                            <div class="original-price">680,000원</div>
+                            <div class="final-price">442,000원~</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-column">
+                        <h3>고객센터</h3>
+                        <p>오전 9시 ~ 새벽 3시 운영</p>
+                        <p>채팅 상담 문의: 24시간 운영</p>
+                        <div class="cs-buttons">
+                            <a href="tel:1670-0000" class="btn-cs">
+                                <span class="icon">📞</span>
+                                <div class="text">
+                                    <strong>1670-0000</strong>
+                                </div>
+                            </a>
+                            <a href="#" class="btn-cs">
+                                <span class="icon">💬</span>
+                                <div class="text">
+                                    <strong>채팅 상담</strong>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>회사</h3>
+                        <ul>
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">채용정보</a></li>
+                            <li><a href="#">제휴문의</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>서비스</h3>
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                            <li><a href="#">여행 매거진</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>혜택</h3>
+                        <ul>
+                            <li><a href="#">멤버십 안내</a></li>
+                            <li><a href="#">공동예매 가이드</a></li>
+                            <li><a href="#">포인트 정책</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>모든 여행</h3>
+                        <ul>
+                            <li><a href="#">국내 숙소</a></li>
+                            <li><a href="#">해외 숙소</a></li>
+                            <li><a href="#">항공권</a></li>
+                            <li><a href="#">렌터카</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="footer-divider" />
+
+                <div class="footer-bottom">
+                    <div class="company-info">
+                        <p>(주)데스티노 컴퍼니 | 대표이사: 김여행 | 사업자등록번호: 000-00-00000</p>
+                        <p>주소: 서울특별시 강남구 테헤란로 123 | 이메일: help@destino.com</p>
+                        <p class="disclaimer">
+                            데스티노는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과
+                            관련한 의무와 책임은 각 판매자에게 있습니다.
+                        </p>
+
+                        <div class="footer-policy">
+                            <a href="#">이용약관</a>
+                            <a href="#"><strong>개인정보처리방침</strong></a>
+                            <a href="#">소비자 분쟁해결 기준</a>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-icon">YouTube</a>
+                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- 자바스크립트 연결 -->
+    <script src="../static/gloval-hotel.js"></script>
+</body>
+</html>
