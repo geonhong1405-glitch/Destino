@@ -195,28 +195,28 @@ ul {
 
 /* 이미지에 맞춰 각 아이콘 배경색 지정 (연한 파스텔톤) */
 .color-ai {
-    background-color: #f0f3ff;
+    background-color: #EEF2FF;
 }
 .color-group {
-    background-color: #fff0f5;
+    background-color: #FDF2F8;
 }
 .color-flight {
-    background-color: #f0f9ff;
+    background-color: #F0F9FF;
 }
 .color-overseas {
-    background-color: #f8f9fa;
+    background-color: #ECFDF5;
 }
 .color-domestic {
     background-color: #f8f9fa;
 }
 .color-package {
-    background-color: #f8f9fa;
+    background-color: #FAF5FF;
 }
 .color-tour {
-    background-color: #f8f9fa;
+    background-color: #FFFBEB;
 }
 .color-rentcar {
-    background-color: #f8f9fa;
+    background-color: #F0FDFA;
 }
 
 /* 모바일 대응: 화면이 아주 작아지면 가로 스크롤 표시 */
@@ -254,11 +254,78 @@ ul {
     padding: 60px 0;
 }
 
+/* [수정] 슬라이더 래퍼: 양옆에 50px씩 공간 확보 */
+/* [수정] 슬라이더 래퍼: 넘치는 내용 숨기기 및 버튼 공간 확보 */
 .event-slider-wrapper {
     position: relative;
+    width: 100%;
+    /* 슬라이드가 넘칠 때 숨김 처리 */
+    overflow: hidden; 
+    /* 좌우 화살표가 겹치지 않도록 안쪽 여백 추가 (선택사항, 디자인에 따라 조정) */
+    padding: 0 60px; 
+}
+
+/* [수정] Grid 대신 Flex 사용 (가로로 길게 늘어뜨리기 위함) */
+.grid-33 {
+    display: flex; /* grid 대신 flex 사용 */
+    gap: 20px;
+    width: 100%;
+    /* 슬라이드 애니메이션 효과 */
+    transition: transform 0.4s ease-in-out; 
+    /* 내용물이 줄바꿈 되지 않도록 설정 */
+    flex-wrap: nowrap; 
+}
+
+/* 미디어 쿼리 부분의 grid 설정은 JS가 너비를 제어하므로 CSS에서는 제거하거나 무시됩니다.
+   단, gap은 유지됩니다. */
+
+/* [수정] 버튼 위치 조정 */
+/* overflow: hidden 때문에 버튼이 짤리지 않도록 위치를 안쪽으로 조정하거나 z-index 확인 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* 회전 제거 후 수직 중앙 정렬로 변경 권장 */
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* 버튼 내 이미지 회전 등은 기존 유지하되, 버튼 자체 위치를 컨테이너 안쪽으로 이동 */
+.prev {
+    left: 10px; /* -20px에서 안쪽으로 변경 (짤림 방지) */
+}
+.prev img {
+    transform: rotate(90deg); /* 이미지는 기존대로 회전 */
+}
+
+.next {
+    right: 10px; /* -20px에서 안쪽으로 변경 */
+}
+.next img {
+    transform: rotate(90deg); /* 이미지는 기존대로 회전 */
+}
+
+/* [수정] 모바일 대응 */
+@media (max-width: 768px) {
+    /* 모바일에서도 슬라이더 버튼을 보여주고 싶다면 display: none 제거 */
+    /* .slider-btn { display: none; } <- 이 부분 삭제 또는 주석 처리 */
+    
+    /* 모바일 터치 스크롤을 원하시면 아래 속성 추가 */
+    .grid-33 {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; /* 스크롤 시 딱딱 멈추는 효과 */
+    }
+    .event-c {
+        scroll-snap-align: start;
+    }
 }
 
 /* 2. 그리드 설정: 무조건 3개씩 보이도록 유지 */
@@ -270,6 +337,21 @@ ul {
 }
 
 /* 3. 카드 공통 사이즈 및 기본 스타일 */
+.event-c {
+    position: relative;
+    min-height: 160px;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* 연한 테두리 추가 */
+}
+
 .event-card {
     position: relative;
     min-height: 160px;
@@ -292,16 +374,50 @@ ul {
 
 /* 4. 카드 개별 테마 (HTML 클래스 매칭) */
 .yellow-card {
-    background-color: #ffc800;
-    color: #333;
+    background: url(https://cdn.pixabay.com/photo/2023/10/11/13/41/ship-8308680_1280.jpg) no-repeat center/100% auto;
+    color: #fff;
+}
+.yellow-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 검은색 오버레이 */
+    z-index: 1;
 }
 .pink-card {
-    background-color: #fff0f0;
-    color: #8b1d1d;
-}
-.image-card {
+    background: url(   https://cdn.pixabay.com/photo/2014/11/03/08/24/china-514865_1280.jpg) no-repeat center/100% auto;
     color: #fff;
-} /* 배경 이미지가 있는 카드용 */
+}
+
+.pink-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 검은색 오버레이 */
+    z-index: 1;
+}
+
+.image-card {
+    background: url(   https://cdn.pixabay.com/photo/2020/09/04/08/02/cityscape-5543224_1280.jpg) no-repeat center/100% auto;
+    color: #fff;
+}
+
+.image-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 반투명 검은색 오버레이 */
+    z-index: 1;
+}
 
 .event-content.light {
     color: #fff;
@@ -333,44 +449,6 @@ ul {
     text-decoration: none;
 }
 
-.btn-event-red {
-    margin-top: 12px;
-    padding: 8px 16px;
-    background: #ff3b3b;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: clamp(10px, 0.9vw, 12px);
-    cursor: pointer;
-}
-
-/* 7. 슬라이드 화살표 위치 */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.prev {
-    left: -20px;
-}
-.next {
-    right: -20px;
-}
-
 /* 8. 반응형 세부 조정 */
 @media (max-width: 1200px) {
     .grid-3 {
@@ -399,9 +477,6 @@ ul {
     .event-desc {
         display: none;
     } /* 공간 확보를 위해 모바일 설명 생략 */
-    .slider-btn {
-        display: none;
-    } /* 모바일 터치 환경 고려 화살표 숨김 */
 }
 
 /* Product Cards */
@@ -412,18 +487,33 @@ ul {
     background: #fff;
 }
 .img-box {
-    height: 200px;
+    height: 220px;
     background: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.box1 {
+    font-size: 0;
+    background: url(https://cdn.pixabay.com/photo/2020/03/23/02/52/pension-4959272_1280.jpg) no-repeat center -25px /100% auto;
+}
+.box2 {
+    font-size: 0;
+    background: url(	https://cdn.pixabay.com/photo/2017/03/27/07/27/republic-of-the-philippines-2177616_1280.jpg) 
+    no-repeat center/100% auto;
+}
+.box3 {
+    font-size: 0;
+    background: url() no-repeat center/100% auto;
+}
+
 .info-box {
-    padding: 20px;
+    padding: 14px 20px 20px 20px;
 }
 .p-title {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 .p-price span {
     text-decoration: line-through;
